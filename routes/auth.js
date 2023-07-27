@@ -77,4 +77,11 @@ router.get('/login/email/verify', passport.authenticate('magiclink', {
   failureRedirect: '/login'
 }));
 
+router.post('/logout', function(req, res, next) {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
+});
+
 module.exports = router;
